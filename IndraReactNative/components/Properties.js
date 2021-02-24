@@ -7,7 +7,7 @@ import ModelInputfield from './ModelInputfield.js'
 import { ButtonUseModel, ButtonSubmitOptions } from './button.js'
 import { Logs } from 'expo'
 
-Logs.enableExpoCliLogging() //enable the logs in expo cli
+//Logs.enableExpoCliLogging() //enable the logs in expo cli
 
 var width = Dimensions.get('window').width;
 var height = Dimensions.get('window').height;
