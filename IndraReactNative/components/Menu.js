@@ -29,7 +29,7 @@ class Menu extends Component {
             axios.get(`${this.api_server}models`)
             .then((res) => {
                 var r = res.data;
-                //console.log(res.data)
+                console.log(res.data)
                 var activeNames = [];
                 r.forEach((item, index) => {
                     if(item.active){
@@ -55,7 +55,7 @@ class Menu extends Component {
     //Change model description after select a model in the dropdown
     onDropdownChange(text, index, dat){
         var selDoc = this.state.names[index].doc;
-        this.setState({curID: index, curDoc: selDoc});
+        this.setState({curID: this.state.names[index].modelID, curDoc: selDoc});
     }
 
     alertModelName = async () => {

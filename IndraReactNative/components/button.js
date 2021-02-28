@@ -3,6 +3,7 @@ import { Text, TouchableOpacity } from 'react-native'
 
 function ButtonUseModel(props){
     const { buttonStyle, testID, textStyle, navigationPath, navigation} = props
+    console.log(navigationPath[1].modelID)
     return(
         <TouchableOpacity
             style = {buttonStyle}
