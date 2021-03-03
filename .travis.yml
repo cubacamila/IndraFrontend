@@ -7,7 +7,7 @@ node_js: lts/*
 before_install:
   - npm install -g npm@latest
   - npm install
-  - npm install -g expo-cli
+  - npm install --save-dev expo-cli
 
 script:
   - npm ci
