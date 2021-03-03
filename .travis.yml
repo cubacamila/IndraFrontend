@@ -13,5 +13,3 @@ script:
   - npm ci
   - expo signin -u "indrareactnative" -p "qawsedrf12345"
   - expo start
-//  - npx expo publish --non-interactive
-//  - make test
