@@ -13,4 +13,5 @@ before_install:
 script:
   - npm ci
   - expo signin -u "indrareactnative" -p "qawsedrf12345"
+  - npx expo-optimize
   - npx expo publish --non-interactive
