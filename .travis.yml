@@ -9,6 +9,8 @@ before_install:
   - npm install
   - npm install --save-dev expo-cli
   - yarn add expo
+  - yarn global add react react-native-cli exp
+
 
 script:
   - npm ci
