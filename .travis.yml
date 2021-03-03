@@ -11,6 +11,6 @@ before_install:
 
 script:
   - npm ci
-  - npx expo login -u $indrareactnative -p $qawsedrf12345
+  - expo signin -u "indrareactnative" -p "qawsedrf12345"
   - npx expo publish --non-interactive
   - make test
