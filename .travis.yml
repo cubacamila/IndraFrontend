@@ -15,3 +15,5 @@ before_install:
 script:
   - npm ci
   - expo signin -u "indrareactnative" -p "qawsedrf12345"
+  - cd IndraReactNative
+  - npx expo publish --non-interactive
