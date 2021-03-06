@@ -1,18 +1,25 @@
-env:
-  global:
-  - NODE_VERSION=stable
-
 language: node_js
-node_js: lts/*
-before_install:
+node_js:
+  - node
+  - lts/*
+cache:
+  directories:
+    - ~/.npm
+    - .jest
+before_script:
   - npm install -g npm@latest
   - npm install
-  - npm install --save-dev expo-cli
-  - yarn add expo
-  - yarn global add react react-native-cli exp
-
-
+  - npm install jest-expo
+  - npm install -g expo-cli
 script:
   - npm ci
-  - expo signin -u "indrareactnative" -p "qawsedrf12345"
-  - cd IndraReactNative
+  - npx jest --ci
+jobs:
+  include:
+    - stage: deploy
+      node_js: lts/*
+      script:
+        - npm ci
+        - npx expo login -u "indrareactnative" -p "qawsedrf12345"
+        - cd IndraReactNative
+        - npx expo publish --non-interactive
