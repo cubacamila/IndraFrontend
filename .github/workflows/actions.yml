@@ -18,6 +18,7 @@ jobs:
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
       - run: yarn install
+      - run: cd IndraReactNative
       - run: expo publish --release-channel=pr-${{ github.event.number }}
       - uses: unsplash/comment-on-pr@master
         env:
