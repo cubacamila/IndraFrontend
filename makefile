@@ -18,6 +18,7 @@ upload:
 dev_env:
 	# set up developer environment!
 	# need to have npm installed!
+	# linux system might need sudo before command
 	npm -v 
 	cd $(NATIVE_DIR) && npm install
 	npm install expo-cli --global
