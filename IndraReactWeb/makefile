@@ -1,16 +1,13 @@
-REPO = indras_net
-WEBAPP = $(REPO)/webapp
+JSLINT = ./node_modules/.bin/eslint --fix
+JSFILES = src
 
-prod: test
-	echo "Building web production system!"
+tests: lint jstests
 
-setup_react:
-	echo "Setup the react"
-	cd $(REPO); make setup_react
+install:
+	npm install
 
-local:
-	echo "Building local web system!"
-	cd $(WEBAPP); npm run start
+lint:
+	$(JSLINT) $(JSFILES)
 
-test:
-	echo "Running our tests!"
+jstests:
+	./node_modules/.bin/cross-env CI=true npm test -- --coverage --watchAll=false
