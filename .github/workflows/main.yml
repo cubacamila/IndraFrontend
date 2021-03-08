@@ -18,5 +18,6 @@ jobs:
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
           expo-cache: true
+      - run: expo login -u indrareactnative -p qawsedrf12345
       - run: cd IndraReactNative && yarn install
       - run: cd IndraReactNative && expo publish
