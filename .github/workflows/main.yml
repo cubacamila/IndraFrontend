@@ -19,4 +19,4 @@ jobs:
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
           expo-cache: true
       - run: cd IndraReactNative && yarn install
-      - run: expo publish
+      - run: cd IndraReactNative && expo publish
