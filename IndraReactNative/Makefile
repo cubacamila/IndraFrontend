@@ -5,3 +5,9 @@ prod: tests
 
 tests:
 	jest
+
+start:
+	expo start
+
+publish: 
+	expo publish
