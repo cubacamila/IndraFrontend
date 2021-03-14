@@ -36,7 +36,7 @@ function ScatterPlot(props) {
     Object.keys(env).forEach((group, iGroup) => {
       data.push({
         name: env[group].name,
-        color: env[group].attrs.color,
+        color: env[group].color,
         data: [],
       });
       const markerProp = env[group].attrs.marker;
