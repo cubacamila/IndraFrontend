@@ -4,7 +4,7 @@ WEB_DIR = IndraReactWeb
 COMMON_DIR = IndraReactCommon
 
 native:
-	cd $(NATIVE_DIR)
+	cd $(NATIVE_DIR); make prod
 
 web:
 	cd $(WEB_DIR); make prod
@@ -15,7 +15,7 @@ start:
 upload:
 	cd $(NATIVE_DIR) && expo publish
 
-dev_env:
+dev_env_native:
 	# set up developer environment!
 	# need to have npm installed!
 	# linux system might need sudo before command
