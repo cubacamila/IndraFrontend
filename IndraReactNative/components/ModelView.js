@@ -11,6 +11,7 @@ class ModelView extends Component {
         const { route, navigation } = this.props
         this.state = {modelParams: route.params.modelParams, modelID: route.params.modelID, ready: false}
         this.props_url = config.PROPS_URL;
+        this.menu_url = config.MENU_URL;
     }
 
     async componentDidMount(){
@@ -19,9 +20,18 @@ class ModelView extends Component {
         .put(`${this.props_url}${this.state.modelID}`, this.state.modelParams)
         .then((response) => {
             //console.log("Response header:", response.header, "\n\n")
-            //console.log("Response data:", response.data)
+            
+            var temp = response.data
+            this.setState({execKey: temp.exec_key})
+            return axios.get(`${this.menu_url}${this.state.execKey}`)
+        })
+        .then((response) => {
+            //console.log("Response header:", response.header, "\n\n")
+            
             var temp = JSON.stringify(response.data)
-            this.setState({modelNewParams: temp})
+            console.log(temp)
+            this.setState({choices: temp})
+            
         })
         .catch(error => console.error(error));
         
@@ -29,11 +39,10 @@ class ModelView extends Component {
     }
 
     render(){
-        var displayModelParams = "";
+
         var temp = <Text>loading...</Text>
         if(this.state.ready){
-            displayModelParams = this.state.modelNewParams;
-            temp = <Text>{displayModelParams}</Text>
+            temp = <Text>{this.state.choices}</Text>
         }
         return(
             <View>
