@@ -9,6 +9,7 @@ import ActionMenu from './components/ActionMenu';
 import NotFoundPage from './components/NotFoundPage';
 import ErrorCatching from './components/ErrorCatching';
 
+// The styling below should be in a style sheet, not in javascript:
 const Wrapper = styled('div')`
   background: ${(props) => props.theme.background};
   width: 100vw;

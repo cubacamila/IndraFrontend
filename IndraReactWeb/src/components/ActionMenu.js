@@ -23,8 +23,8 @@ const BAR = 4;
 const DEBUG = 5;
 const SOURCE = 6;
 const LOG = 7;
-const API_SERVER = `${config.API_URL}models/menu/`;
-const CLEAR_REGISTRY_API = `${config.API_URL}registry/clear/`;
+const MENU_URL = `${config.API_URL}models/menu/`;
+const CLEAR_REGISTRY_URL = `${config.API_URL}registry/clear/`;
 
 class ActionMenu extends Component {
   constructor(props) {
@@ -50,13 +50,13 @@ class ActionMenu extends Component {
       continuousRun: true,
       continuousRunDisabled: false,
       initLoading: true,
-      EXECUTION_KEY: envFile.exec_key,
+      EXEC_KEY: envFile.exec_key,
     };
     autoBind(this);
   }
 
   async componentDidMount() {
-    const { EXECUTION_KEY } = this.state;
+    const { EXEC_KEY } = this.state;
     const { location } = this.props;
     const { state } = location;
     const {
@@ -66,7 +66,7 @@ class ActionMenu extends Component {
       document.title = 'Indra | Menu';
       // you need to pass the execution key that you get from put_props
       // which is in ModelDetail, the current execution key is undefined
-      const m = await axios.get(`${API_SERVER}${EXECUTION_KEY}`);
+      const m = await axios.get(`${MENU_URL}${EXEC_KEY}`);
       // debugger;
       this.setState({
         menu: m.data,
@@ -105,9 +105,9 @@ class ActionMenu extends Component {
 
   async componentWillUnmount() {
     // clear the registry in the backend.
-    const { EXECUTION_KEY } = this.state;
+    const { EXEC_KEY } = this.state;
     await axios.get(
-      `${CLEAR_REGISTRY_API}${EXECUTION_KEY}`,
+      `${CLEAR_REGISTRY_URL}${EXEC_KEY}`,
     );
     // not doing anything with the response.
     // allow the frontend to continue functioning.
@@ -194,8 +194,8 @@ class ActionMenu extends Component {
   };
 
   sendNumPeriods = async () => {
-    const { periodNum, envFile, EXECUTION_KEY } = this.state;
-    const envFileWithExecutionKey = { ...envFile, execution_key: EXECUTION_KEY };
+    const { periodNum, envFile, EXEC_KEY } = this.state;
+    const envFileWithExecutionKey = { ...envFile, execution_key: EXEC_KEY };
     this.setState({ loadingData: true });
     try {
       const res = await axios.put(
