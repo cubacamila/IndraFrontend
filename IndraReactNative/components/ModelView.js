@@ -23,18 +23,13 @@ class ModelView extends Component {
         let params = axios
         .put(`${this.props_url}${this.state.modelID}`, this.state.modelParams)
         .then((response) => {
-            
             var temp = response.data
             this.setState({execKey: temp.exec_key})
             return axios.get(`${this.menu_url}${this.state.execKey}`)
         })
         .then((response) => {
-            
             var temp = JSON.stringify(response.data)
-
-            this.setState({models: temp})
-            //console.log("#########", temp)
-            
+            this.setState({models: temp, ready: true})
         })
         .catch(error => console.error(error));
         
@@ -49,13 +44,10 @@ class ModelView extends Component {
     render(){
 
         var temp = <Text>loading...</Text>
-        if(this.state.ready){
-            temp = <Text>{this.state.models}</Text>
-        }
-
+        
         //const buttons = ['Population graph', 'Scatter plot', 'Bar graph', 'Model data', 'Source code']
         const { modelId } = this.state
-        console.log("@@@@@@", this.state.models)
+        
         var buttons = [];
         if (this.state.models != undefined) {
             var obj = JSON.parse(this.state.models);
@@ -64,10 +56,12 @@ class ModelView extends Component {
                 buttons.push(obj[i].func)
             }
         }
-        console.log("test2");
         
         
-
+        
+        
+        if(this.state.ready != true) return <View><Text>temp</Text></View>;
+        else{
 
         return(
             <View>
@@ -97,10 +91,10 @@ class ModelView extends Component {
 
                 
                 </ScrollView>
-                    <Text>{temp}</Text>
+                    <Text>{this.state.models}</Text>
                 </ScrollView>
             </View>
-        )
+        )}
     }
 
 }
