@@ -12,7 +12,7 @@ class ModelView extends Component {
     constructor(props) {
         super(props);
         const { route, navigation } = this.props
-        this.state = {modelParams: route.params.modelParams, modelID: route.params.modelID, ready: false}
+        this.state = {modelParams: route.params.modelParams, modelID: route.params.modelID, modelName: route.params.modelName, ready: false}
         this.props_url = config.PROPS_URL;
         this.menu_url = config.MENU_URL;
         this.modelId = 1;
@@ -42,10 +42,9 @@ class ModelView extends Component {
 
 
     render(){
-
+        //console.log("find model name:", this.state.modelParams);
         var temp = <Text>loading...</Text>
-        
-        //const buttons = ['Population graph', 'Scatter plot', 'Bar graph', 'Model data', 'Source code']
+
         const { modelId } = this.state
         
         var buttons = [];
@@ -66,6 +65,13 @@ class ModelView extends Component {
         return(
             <View>
                 <ScrollView>
+                    {/*
+                    <View style={{padding: 5}}>
+                        <Text style={styles.titleText}>
+                            {this.state.modelName}
+                        </Text>
+                    </View>
+                    */}
                 <ScrollView 
                     
                     showsHorizontalScrollIndicator={false}
@@ -102,10 +108,16 @@ class ModelView extends Component {
 export default ModelView
 
 const styles = StyleSheet.create ({
+    /*titleText: {
+        fontSize: 30,
+        fontWeight: "bold",
+        fontFamily: 'Arial'
+    },*/
     buttonContainer: {
         backgroundColor: '#f8f8f0'
     },
     buttonStyle: {
         width: width*0.3
     }
+
 })

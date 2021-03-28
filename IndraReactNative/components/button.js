@@ -8,7 +8,8 @@ function ButtonUseModel(props){
         <TouchableOpacity
             style = {buttonStyle}
             onPress={() => navigation.navigate(navigationPath[0], {
-                modelID: navigationPath[1].modelID
+                modelID: navigationPath[1].modelID, 
+                modelName: navigationPath[1].modelName
             })}
             testID = {testID}>
             <Text style = {textStyle}>
@@ -25,7 +26,11 @@ function ButtonSubmitOptions(props){
         <TouchableOpacity
             style = {buttonStyle}
             testID = {testID}
-            onPress = {() => navigation.navigate(navigationPath[0], { modelParams: navigationPath[1], modelID: navigationPath[2]})}>
+            onPress = {() => navigation.navigate(navigationPath[0], { 
+                modelParams: navigationPath[1], 
+                modelID: navigationPath[2],
+                modelName: navigationPath[3],
+                })}>
             <Text style = {textStyle}>
                 Submit
             </Text>

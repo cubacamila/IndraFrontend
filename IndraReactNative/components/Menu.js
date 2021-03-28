@@ -18,7 +18,7 @@ class Menu extends Component {
     
     constructor(props) {
         super(props);
-        this.state = {names: [], title: "-Indra ABM Models-", dropdown: [], curID: -1, curDoc: "Choose a model to show description."}
+        this.state = {names: [], title: "-Indra ABM Models-", dropdown: [], curID: -1, curName: "", curDoc: "Choose a model to show description."}
         this.api_server = config.API_URL;
         this.alertModelName = this.alertModelName.bind(this);
         this.onDropdownChange = this.onDropdownChange.bind(this);
@@ -54,8 +54,8 @@ class Menu extends Component {
 
     //Change model description after select a model in the dropdown
     onDropdownChange(text, index, dat){
-        var selDoc = this.state.names[index].doc;
-        this.setState({curID: this.state.names[index].modelID, curDoc: selDoc});
+        var curModel = this.state.names[index];
+        this.setState({curID: curModel.modelID, curName: curModel.name, curDoc: curModel.doc});
     }
 
     alertModelName = async () => {
@@ -88,7 +88,7 @@ class Menu extends Component {
                 buttonStyle = {styles.button}
                 testID = {CONFIRM_BUTTON}
                 textStyle = {styles.buttonText}
-                navigationPath={['Properties', {modelID: this.state.curID}]}
+                navigationPath={['Properties', {modelID: this.state.curID, modelName: this.state.curName}]}
                 navigation = {this.props.navigation}
             />
             </ScrollView>
