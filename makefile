@@ -33,5 +33,3 @@ dev_env_web:
 	# linux system might need sudo before command
 	npm -v git
 	cd $(WEB_DIR) && npm install
-	npm install eslint --save-dev
-
