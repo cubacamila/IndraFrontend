@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, Dimensions, StyleSheet } from 'react-native'
 import { Button, ButtonGroup } from 'react-native-elements';
 import axios from 'axios'
-import config from '../config'
+import config from '../../IndraReactCommon/config'
 import { ScrollView } from 'react-native-gesture-handler';
 
 var width = Dimensions.get('window').width;

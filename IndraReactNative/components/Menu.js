@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native'
 import { Dropdown } from 'react-native-material-dropdown-v2';
 import axios from 'axios'
-import config from '../config'
+import config from '../../IndraReactCommon/config'
 import { Paragraph } from 'react-native-paper';
 import { ButtonUseModel } from './button.js'
 
