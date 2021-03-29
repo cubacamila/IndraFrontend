@@ -12,7 +12,7 @@ import sandpileImg from './images/Sandpile.jpg';
 import sandpile1Img from './images/sandpile_2.png';
 import mandelobrotImg from './images/mendelobrot_sq.jpg';
 import './styles.css';
-import config from '../config';
+import config from 'IndraReactCommon/config';
 
 class Home extends Component {
   constructor(props) {

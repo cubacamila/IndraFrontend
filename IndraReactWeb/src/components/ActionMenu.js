@@ -12,7 +12,7 @@ import ModelStatusBox from './ModelStatusBox';
 import SourceCodeViewer from './SourceCodeViewer';
 import RunModelButton from './RunModelButton';
 import './styles.css';
-import config from '../config';
+import config from 'IndraReactCommon/config';
 import LogsViewer from './LogsViewer';
 
 

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ModelInputField from './ModelInputField';
 import PageLoader from './PageLoader';
 import './styles.css';
-import config from '../config';
+import config from 'IndraReactCommon/config';
 
 const apiServer = `${config.API_URL}models/props/`;
 
