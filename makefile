@@ -24,8 +24,8 @@ dev_env_native:
 	# linux system might need sudo before command
 	npm -v 
 	cd $(NATIVE_DIR) && npm install
-	npm install expo-cli --global
-	npm install --save-dev jest
+	npm install expo-cli --global --legacy-peer-deps
+	#npm install --save-dev jest
 
 dev_env_web:
 	# set up developer environment!
