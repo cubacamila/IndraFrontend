@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/IndraFrontend/static/css/main.83acbbd9.chunk.css",
-    "main.js": "/IndraFrontend/static/js/main.2f600fc9.chunk.js",
-    "main.js.map": "/IndraFrontend/static/js/main.2f600fc9.chunk.js.map",
-    "runtime-main.js": "/IndraFrontend/static/js/runtime-main.19e0b32e.js",
-    "runtime-main.js.map": "/IndraFrontend/static/js/runtime-main.19e0b32e.js.map",
-    "static/css/2.1d56c5fb.chunk.css": "/IndraFrontend/static/css/2.1d56c5fb.chunk.css",
-    "static/js/2.63f12bef.chunk.js": "/IndraFrontend/static/js/2.63f12bef.chunk.js",
-    "static/js/2.63f12bef.chunk.js.map": "/IndraFrontend/static/js/2.63f12bef.chunk.js.map",
+    "main.css": "/IndraFrontend/static/css/main.9462842e.chunk.css",
+    "main.js": "/IndraFrontend/static/js/main.aa424a65.chunk.js",
+    "main.js.map": "/IndraFrontend/static/js/main.aa424a65.chunk.js.map",
+    "runtime-main.js": "/IndraFrontend/static/js/runtime-main.e0d73f4f.js",
+    "runtime-main.js.map": "/IndraFrontend/static/js/runtime-main.e0d73f4f.js.map",
+    "static/css/2.d53a53b5.chunk.css": "/IndraFrontend/static/css/2.d53a53b5.chunk.css",
+    "static/js/2.bd35b227.chunk.js": "/IndraFrontend/static/js/2.bd35b227.chunk.js",
+    "static/js/2.bd35b227.chunk.js.map": "/IndraFrontend/static/js/2.bd35b227.chunk.js.map",
     "index.html": "/IndraFrontend/index.html",
-    "precache-manifest.5c030769e8f8117f9c3d9debbe19460e.js": "/IndraFrontend/precache-manifest.5c030769e8f8117f9c3d9debbe19460e.js",
+    "precache-manifest.f09ba6ec8ba3d63e5957854be0a6c64e.js": "/IndraFrontend/precache-manifest.f09ba6ec8ba3d63e5957854be0a6c64e.js",
     "service-worker.js": "/IndraFrontend/service-worker.js",
-    "static/css/2.1d56c5fb.chunk.css.map": "/IndraFrontend/static/css/2.1d56c5fb.chunk.css.map",
-    "static/css/main.83acbbd9.chunk.css.map": "/IndraFrontend/static/css/main.83acbbd9.chunk.css.map",
-    "static/js/2.63f12bef.chunk.js.LICENSE.txt": "/IndraFrontend/static/js/2.63f12bef.chunk.js.LICENSE.txt",
+    "static/css/2.d53a53b5.chunk.css.map": "/IndraFrontend/static/css/2.d53a53b5.chunk.css.map",
+    "static/css/main.9462842e.chunk.css.map": "/IndraFrontend/static/css/main.9462842e.chunk.css.map",
+    "static/js/2.bd35b227.chunk.js.LICENSE.txt": "/IndraFrontend/static/js/2.bd35b227.chunk.js.LICENSE.txt",
     "static/media/Sandpile.jpg": "/IndraFrontend/static/media/Sandpile.090bc1a0.jpg",
     "static/media/mendelobrot_sq.jpg": "/IndraFrontend/static/media/mendelobrot_sq.875dd8b8.jpg",
     "static/media/sandpile_2.png": "/IndraFrontend/static/media/sandpile_2.d38b3fb1.png",
     "static/media/slick-theme.css": "/IndraFrontend/static/media/slick.f97e3bbf.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.19e0b32e.js",
-    "static/css/2.1d56c5fb.chunk.css",
-    "static/js/2.63f12bef.chunk.js",
-    "static/css/main.83acbbd9.chunk.css",
-    "static/js/main.2f600fc9.chunk.js"
+    "static/js/runtime-main.e0d73f4f.js",
+    "static/css/2.d53a53b5.chunk.css",
+    "static/js/2.bd35b227.chunk.js",
+    "static/css/main.9462842e.chunk.css",
+    "static/js/main.aa424a65.chunk.js"
   ]
 }
