@@ -13,8 +13,9 @@
  * For more infromation - https://create-react-app.dev/docs/adding-custom-environment-variables/
  */
  let API_URL = 'https://indraabm.herokuapp.com/';
- let PROPS_URL = API_URL + 'models/props/'
- let MENU_URL = API_URL + 'models/menu/'
+ let PROPS_URL = API_URL + 'models/props/';
+ let MENU_URL = API_URL + 'models/menu/';
+ let RUN_URL = API_URL + 'models/run/';
  
  if (process.env.REACT_APP_API_URL) {
    API_URL = process.env.REACT_APP_API_URL;
