@@ -6,7 +6,7 @@ import PageLoader from './PageLoader';
 import './styles.css';
 import config from 'IndraReactCommon/config';
 
-const apiServer = `${config.API_URL}models/props/`;
+const apiServer = config.PROPS_URL;
 
 class ModelDetail extends Component {
   constructor(props) {

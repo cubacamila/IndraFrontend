@@ -23,8 +23,8 @@ const BAR = 4;
 const DEBUG = 5;
 const SOURCE = 6;
 const LOG = 7;
-const MENU_URL = `${config.API_URL}models/menu/`;
-const CLEAR_REGISTRY_URL = `${config.API_URL}registry/clear/`;
+const MENU_URL = config.MENU_URL;
+const CLEAR_REGISTRY_URL = config.CLEAR_REGISTRY_URL;
 
 class ActionMenu extends Component {
   constructor(props) {
