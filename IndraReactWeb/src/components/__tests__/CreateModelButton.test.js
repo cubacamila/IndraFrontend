@@ -30,7 +30,7 @@ describe('<CreateModelButton/>', () => {
       children: 'Create a new model',
       active: false,
       disabled: false,
-      type: 'button',
+      // type: 'button',
     });
   });
 });
