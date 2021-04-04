@@ -30,7 +30,7 @@ describe('<BackHomeButton/>', () => {
       children: 'Back Home',
       active: false,
       disabled: false,
-      type: 'button',
+      // type: 'button',
     });
   });
 });
