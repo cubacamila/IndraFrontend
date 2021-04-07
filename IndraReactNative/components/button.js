@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity, Alert } from 'react-native'
 
 function ButtonUseModel(props){
     const { buttonStyle, testID, textStyle, navigationPath, navigation} = props
@@ -7,10 +7,13 @@ function ButtonUseModel(props){
     return(
         <TouchableOpacity
             style = {buttonStyle}
-            onPress={() => navigation.navigate(navigationPath[0], {
+            onPress={() => {if (navigationPath[1].modelID > -1) {navigation.navigate(navigationPath[0], {
                 modelID: navigationPath[1].modelID, 
                 modelName: navigationPath[1].modelName
-            })}
+            })}else{
+                Alert.alert("Please choose a model");
+            }}
+        }
             testID = {testID}>
             <Text style = {textStyle}>
                 Use this model
