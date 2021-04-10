@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, Dimensions, StyleSheet } from 'react-native';
-import { Button, ButtonGroup } from 'react-native-elements';
+import { Button, ButtonGroup, Input } from 'react-native-elements';
 import axios from 'axios';
 import config from '../../IndraReactCommon/config'
 import { ScrollView } from 'react-native-gesture-handler';
-import RunModelButton from './RunModelButton';
 
 var width = Dimensions.get('window').width;
 var height = Dimensions.get('window').height;
@@ -19,6 +18,8 @@ class ModelView extends Component {
         this.run_url = config.RUN_URL;
         this.updateModelId = this.updateModelId.bind(this);
         this.modelExist = this.modelWorking.bind(this);
+        this.handleRunPeriod = this.handleRunPeriod.bind(this);
+        this.sendNumPeriods = this.sendNumPeriods(this);
     }
 
     async componentDidMount(){
@@ -61,7 +62,9 @@ class ModelView extends Component {
     }
 
     handleRunPeriod = (e) => {
-
+        this.setState({
+            periodNum: e.target.value,
+          });
     }
 
 
@@ -123,10 +126,24 @@ class ModelView extends Component {
 
                 
                 </ScrollView>
-                    <Text>SelectedId:{this.state.selectedModel+2}</Text>
-                    <Text>ModelWorking:{String(this.state.modelWorking)}</Text>
                     <Text>{"\n"}</Text>
+                    <View style={styles.rowRun}>
                     
+                    <Button
+                        title="run"
+                        sendNumPeriods={this.sendNumPeriods}
+                        buttonStyle={styles.runButton}
+                    >
+                    </Button>
+                    <Text style={styles.runText}>model for</Text>
+                    <Input
+                        type="INT"
+                        placeholder="10"
+                        onChange={this.handleRunPeriod}
+                        containerStyle={styles.input}
+                    />
+                    <Text style={styles.runText}>periods.</Text>
+                    </View>
                 </ScrollView>
             </View>
         )}
@@ -147,6 +164,25 @@ const styles = StyleSheet.create ({
     },
     buttonStyle: {
         width: width*0.3
+    },
+    input: {
+        width: width*0.25
+    },
+    runButton: {
+        backgroundColor: '#00b300',
+        height: height*0.045,
+        width: width*0.2,
+        //size: 15,
+        margin: height*0.005,
+        marginLeft: width*0.026,
+    },
+    runText: {
+        fontSize: width*0.04,
+        marginTop: height* 0.015,
+    },
+    rowRun: {
+        flex: 1,
+        flexDirection: "row",
     }
 
 })
