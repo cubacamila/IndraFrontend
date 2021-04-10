@@ -24,7 +24,7 @@ class ModelView extends Component {
     async componentDidMount(){
         var temp;
         let params = axios
-        .put(`${this.props_url}${this.state.modelID}`, this.state.modelParams);
+        .put(`${this.props_url}${this.state.modelID}`, this.state.modelParams)
         .then((response) => {
             temp = response.data
             this.setState({env: temp, execKey: temp.exec_key});
