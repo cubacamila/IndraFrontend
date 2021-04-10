@@ -56,7 +56,6 @@ class ActionMenu extends Component {
   }
 
   async componentDidMount() {
-    const { EXEC_KEY } = this.state;
     const { location } = this.props;
     const { state } = location;
     const {
@@ -66,7 +65,7 @@ class ActionMenu extends Component {
       document.title = 'Indra | Menu';
       // you need to pass the execution key that you get from put_props
       // which is in ModelDetail, the current execution key is undefined
-      const m = await axios.get(`${MENU_URL}${EXEC_KEY}`);
+      const m = await axios.get(`${MENU_URL}`);
       // debugger;
       this.setState({
         menu: m.data,
@@ -311,12 +310,13 @@ class ActionMenu extends Component {
       <div className="row margin-bottom-80">
         <div className="col w-25">
           <ListGroup>
-            {Object.keys(menu).map((item, i) => (menu[item].id > 1
+            {Object.keys(menu).map((id, i) => (
+            parseInt(id) > 1
               ? this.MenuItem(
                 i,
-                menu[item].id,
-                menu[item].question,
-                menu[item].func,
+                parseInt(id),
+                menu[id].question,
+                menu[id].func,
               )
               : null))}
           </ListGroup>
