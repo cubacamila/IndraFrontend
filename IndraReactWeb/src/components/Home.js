@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Loader, Dimmer } from 'semantic-ui-react';
 import { Dropdown } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
@@ -7,17 +7,18 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import DropdownMenu from 'IndraReactCommon/DropdownMenu.js';
 import Carousel from './Carousel';
-import sandpileImg from './images/Sandpile.jpg';
+/*import sandpileImg from './images/Sandpile.jpg';
 import sandpile1Img from './images/sandpile_2.png';
-import mandelobrotImg from './images/mendelobrot_sq.jpg';
+import mandelobrotImg from './images/mendelobrot_sq.jpg';*/
 import './styles.css';
-import config from 'IndraReactCommon/config';
+//import config from 'IndraReactCommon/config';
 
-class Home extends Component {
+class Home extends DropdownMenu {
   constructor(props) {
     super(props);
-    this.state = {
+    /*this.state = {
       allItems: [],
       loadingData: false,
       apiFailed: false,
@@ -27,8 +28,9 @@ class Home extends Component {
         { image: mandelobrotImg, title: 'by Adam Majewski' },
       ],
     };
-    this.api_server = config.API_URL;
+    this.api_server = config.API_URL;*/
   }
+ 
 
   async componentDidMount() {
     const { history } = this.props;
