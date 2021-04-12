@@ -31,7 +31,7 @@ class Home extends DropdownMenu {
     this.api_server = config.API_URL;*/
   }
  
-
+/*
   async componentDidMount() {
     const { history } = this.props;
     try {
@@ -45,7 +45,7 @@ class Home extends DropdownMenu {
     } catch (e) {
       history.push('/errorCatching');
     }
-  }
+  }*/
 
   renderChooseModelProp = () => (
     <h1 className="small-header">Please choose a model: </h1>
