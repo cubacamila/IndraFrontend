@@ -1,24 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Loader, Dimmer } from 'semantic-ui-react';
 import { Dropdown } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import DropdownMenu from 'IndraReactCommon/DropdownMenu.js';
 import Carousel from './Carousel';
-/*import sandpileImg from './images/Sandpile.jpg';
+import sandpileImg from './images/Sandpile.jpg';
 import sandpile1Img from './images/sandpile_2.png';
-import mandelobrotImg from './images/mendelobrot_sq.jpg';*/
+import mandelobrotImg from './images/mendelobrot_sq.jpg';
 import './styles.css';
-//import config from 'IndraReactCommon/config';
 
-class Home extends DropdownMenu {
+import { getModels } from 'IndraReactCommon/APICalls';
+
+class Home extends Component {
   constructor(props) {
     super(props);
-    /*this.state = {
+    this.state = {
       allItems: [],
       loadingData: false,
       apiFailed: false,
@@ -28,24 +27,23 @@ class Home extends DropdownMenu {
         { image: mandelobrotImg, title: 'by Adam Majewski' },
       ],
     };
-    this.api_server = config.API_URL;*/
   }
  
-/*
+
   async componentDidMount() {
     const { history } = this.props;
     try {
       this.setState({ loadingData: true });
       document.title = 'Home';
-      const res = await axios.get(`${this.api_server}models?active=true`);
-      this.setState({ allItems: res.data, loadingData: false });
+      let models = await getModels();
+      this.setState({ allItems: models, loadingData: false });
       // setting this so model properties like name, graph etc are access
       // in all tabs of a browser
-      localStorage.setItem('indra_model_details', JSON.stringify(res.data));
+      localStorage.setItem('indra_model_details', JSON.stringify(models));
     } catch (e) {
       history.push('/errorCatching');
     }
-  }*/
+  }
 
   renderChooseModelProp = () => (
     <h1 className="small-header">Please choose a model: </h1>
