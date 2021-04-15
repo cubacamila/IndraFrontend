@@ -11,8 +11,10 @@ import sandpileImg from './images/Sandpile.jpg';
 import sandpile1Img from './images/sandpile_2.png';
 import mandelobrotImg from './images/mendelobrot_sq.jpg';
 import './styles.css';
+import axios from 'axios';
 
-import { getModels } from 'IndraReactCommon/APICalls';
+//import { getModels } from 'IndraReactCommon/APICalls';
+import config from 'IndraReactCommon/config';
 
 class Home extends Component {
   constructor(props) {
@@ -27,6 +29,7 @@ class Home extends Component {
         { image: mandelobrotImg, title: 'by Adam Majewski' },
       ],
     };
+    this.api_server = config.API_URL;
   }
  
 
@@ -35,11 +38,12 @@ class Home extends Component {
     try {
       this.setState({ loadingData: true });
       document.title = 'Home';
-      let models = await getModels();
-      this.setState({ allItems: models, loadingData: false });
+      const res = await axios.get(`${this.api_server}models?active=true`);
+      // let models = await getModels();
+      this.setState({ allItems: res.data, loadingData: false });
       // setting this so model properties like name, graph etc are access
       // in all tabs of a browser
-      localStorage.setItem('indra_model_details', JSON.stringify(models));
+      localStorage.setItem('indra_model_details', JSON.stringify(res.data));
     } catch (e) {
       history.push('/errorCatching');
     }
