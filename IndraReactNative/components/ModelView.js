@@ -12,14 +12,21 @@ class ModelView extends Component {
     constructor(props) {
         super(props);
         const { route, navigation } = this.props;
-        this.state = {modelParams: route.params.modelParams, modelID: route.params.modelID, modelName: route.params.modelName, selectedModel: 0, ready: false, modelWorking: true};
+        this.state = {modelParams: route.params.modelParams, 
+                      modelID: route.params.modelID, 
+                      modelName: route.params.modelName, 
+                      selectedModel: 0, 
+                      periodNum: 10,
+                      ready: false, 
+                      runModelLoading: false,
+                      modelWorking: true};
         this.props_url = config.PROPS_URL;
         this.menu_url = config.MENU_URL;
         this.run_url = config.RUN_URL;
         this.updateModelId = this.updateModelId.bind(this);
         this.modelExist = this.modelWorking.bind(this);
         this.handleRunPeriod = this.handleRunPeriod.bind(this);
-        this.sendNumPeriods = this.sendNumPeriods(this);
+        this.sendNumPeriods = this.sendNumPeriods.bind(this);
     }
 
     async componentDidMount(){
@@ -28,11 +35,12 @@ class ModelView extends Component {
         .put(`${this.props_url}${this.state.modelID}`, this.state.modelParams)
         .then((response) => {
             temp = response.data
+            console.log("set env:", temp);
             this.setState({env: temp, execKey: temp.exec_key});
             return axios.get(`${this.menu_url}`);
         })
         .then((response) => {
-            console.log(response.data[0]);
+            //console.log(response.data[0]);
             temp = JSON.stringify(response.data);
             
             this.setState({models: temp, ready: true});
@@ -58,13 +66,29 @@ class ModelView extends Component {
     }
 
     sendNumPeriods = async () => {
-
+        
+        const { periodNum, env } = this.state;
+        this.setState({ runModelLoading: true });
+        console.log("In sendNumPeriods\n")
+        //env.periodNum = this.state.periodNum;
+        console.log("env:", env);
+        let res = await axios.put(
+            `${this.run_url}${periodNum}`,
+            env
+          );
+        console.log("RUN FOR 10 PERIODS:\n\n\n", await res.data);
+        this.setState({
+            runResult: res.data,
+            runModelLoading: false,
+            msg: res.data.user.user_msgs,
+          });
     }
 
     handleRunPeriod = (e) => {
         this.setState({
             periodNum: e.target.value,
           });
+        console.log("periodNums:", this.state.periodNum)
     }
 
 
@@ -131,10 +155,10 @@ class ModelView extends Component {
                     
                     <Button
                         title="run"
-                        sendNumPeriods={this.sendNumPeriods}
+                        onPress={ this.sendNumPeriods }
                         buttonStyle={styles.runButton}
-                    >
-                    </Button>
+                    />
+                    
                     <Text style={styles.runText}>model for</Text>
                     <Input
                         type="INT"
@@ -144,6 +168,7 @@ class ModelView extends Component {
                     />
                     <Text style={styles.runText}>periods.</Text>
                     </View>
+                    <Text style={styles.modelStatus}>Model Status:{"\n"}{this.state.msg}</Text>
                 </ScrollView>
             </View>
         )}
@@ -183,6 +208,9 @@ const styles = StyleSheet.create ({
     rowRun: {
         flex: 1,
         flexDirection: "row",
+    },
+    modelStatus: {
+        marginLeft: width*0.03,
     }
 
 })
