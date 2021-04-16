@@ -70,7 +70,6 @@ class ModelView extends Component {
         const { periodNum, env } = this.state;
         this.setState({ runModelLoading: true });
         console.log("In sendNumPeriods\n")
-        //env.periodNum = this.state.periodNum;
         console.log("env:", env);
         let res = await axios.put(
             `${this.run_url}${periodNum}`,
@@ -84,11 +83,10 @@ class ModelView extends Component {
           });
     }
 
-    handleRunPeriod = (e) => {
+    handleRunPeriod = (n) => {
         this.setState({
-            periodNum: e.target.value,
+            periodNum: n,
           });
-        console.log("periodNums:", this.state.periodNum)
     }
 
 
@@ -163,7 +161,7 @@ class ModelView extends Component {
                     <Input
                         type="INT"
                         placeholder="10"
-                        onChange={this.handleRunPeriod}
+                        onChangeText={ (n) => this.handleRunPeriod(n) }
                         containerStyle={styles.input}
                     />
                     <Text style={styles.runText}>periods.</Text>
