@@ -17,6 +17,7 @@
  let MENU_URL = API_URL + 'menus/model';
  let RUN_URL = API_URL + 'models/run/';
  let CLEAR_REGISTRY_URL = API_URL + 'registry/clear/';
+ let POPHIST_URL = API_URL + 'pophist/';
  
  if (process.env.REACT_APP_API_URL) {
    API_URL = process.env.REACT_APP_API_URL;
