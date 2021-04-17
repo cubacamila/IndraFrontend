@@ -24,7 +24,7 @@
    PROPS_URL = process.env.REACT_APP_API_URL + 'models/props/';
  }
  
- const config = { API_URL, PROPS_URL, MENU_URL, RUN_URL, CLEAR_REGISTRY_URL };
+ const config = { API_URL, PROPS_URL, MENU_URL, RUN_URL, CLEAR_REGISTRY_URL, POPHIST_URL };
  
  export default config;
  
