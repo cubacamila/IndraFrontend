@@ -290,13 +290,14 @@ class ActionMenu extends Component {
       loadingPopulation,
       loadingScatter,
       loadingLogs,
-      loadingBar
+      loadingBar,
+      EXEC_KEY
     } = this.state;
     return (
       <div className="mt-5">
         <Debugger loadingData={loadingDebugger} envFile={envFile} />
         <SourceCodeViewer loadingData={loadingSourceCode} code={sourceCode} />
-        <PopulationGraph loadingData={loadingPopulation} envFile={envFile} />
+        <PopulationGraph loadingData={loadingPopulation} EXEC_KEY={EXEC_KEY} />
         <PopulationBarGraph loadingData={loadingBar} envFile={envFile} />
         <ScatterPlot loadingData={loadingScatter} envFile={envFile} />
         <LogsViewer loadingData={loadingLogs} envFile={envFile} />

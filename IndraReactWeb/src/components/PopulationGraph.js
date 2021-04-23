@@ -10,11 +10,9 @@ const POPHIST_URL  = config.POPHIST_URL ;
 
 function PopulationGraph(props) {
   const [popHist, setPopHist] = useState({});
-  const { loadingData, envFile } = props;
-
+  const { loadingData, EXEC_KEY } = props;
   useEffect(() => {
     async function fetchPopHist() {
-      const EXEC_KEY = envFile.exec_key;
       const res = await axios.get(`${POPHIST_URL}${EXEC_KEY}`);
       setPopHist(res.data.pops);
     }
@@ -27,7 +25,6 @@ function PopulationGraph(props) {
   let thisColor = 0;
   if (loadingData) {
     const data = [];
-    console.log(popHist);
     const env = popHist;
     // populate 'data' array with groups from 'pops'
     // and their respective values
@@ -57,12 +54,12 @@ function PopulationGraph(props) {
 
 PopulationGraph.propTypes = {
   loadingData: PropType.bool,
-  envFile: PropType.shape(),
+  EXEC_KEY: PropType.number
 };
 
 PopulationGraph.defaultProps = {
   loadingData: true,
-  envFile: {},
+  EXEC_KEY: 0
 };
 
 export default PopulationGraph;
