@@ -18,7 +18,7 @@ function PopulationGraph(props) {
     }
 
     fetchPopHist();
-  }, [props]);
+  }, [props, EXEC_KEY]);
 
   const NUM_COLORS = 7;
   const colors = ['red', 'green', 'blue', 'black', 'purple', 'magenta', 'orange'];
