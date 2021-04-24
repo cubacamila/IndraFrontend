@@ -17,13 +17,15 @@
  let MENU_URL = API_URL + 'menus/model';
  let RUN_URL = API_URL + 'models/run/';
  let CLEAR_REGISTRY_URL = API_URL + 'registry/clear/';
+ let POPHIST_URL = API_URL + 'pophist/';
+ let USER_MSGS_URL = API_URL + 'user/msgs/';
  
  if (process.env.REACT_APP_API_URL) {
    API_URL = process.env.REACT_APP_API_URL;
    PROPS_URL = process.env.REACT_APP_API_URL + 'models/props/';
  }
  
- const config = { API_URL, PROPS_URL, MENU_URL, RUN_URL, CLEAR_REGISTRY_URL };
+ const config = { API_URL, PROPS_URL, MENU_URL, RUN_URL, CLEAR_REGISTRY_URL, POPHIST_URL, USER_MSGS_URL };
  
  export default config;
  

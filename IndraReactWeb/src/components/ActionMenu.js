@@ -25,6 +25,7 @@ const SOURCE = 6;
 const LOG = 7;
 const MENU_URL = config.MENU_URL;
 const CLEAR_REGISTRY_URL = config.CLEAR_REGISTRY_URL;
+const USER_MSGS_URL = config.USER_MSGS_URL;
 
 class ActionMenu extends Component {
   constructor(props) {
@@ -73,7 +74,7 @@ class ActionMenu extends Component {
         source,
         envFile,
         graph,
-        msg: envFile.user.user_msgs,
+        // msg: envFile.user.user_msgs,
         loadingData: false,
       });
     } catch (error) {
@@ -202,11 +203,11 @@ class ActionMenu extends Component {
         envFileWithExecutionKey,
         periodNum,
       );
-
+      const msgData = await axios.get(`${USER_MSGS_URL}${EXEC_KEY}`);
       this.setState({
         envFile: res.data,
         loadingData: false,
-        msg: res.data.user.user_msgs,
+        msg: msgData.data,
       });
       // return true;
     } catch (e) {
@@ -290,13 +291,14 @@ class ActionMenu extends Component {
       loadingPopulation,
       loadingScatter,
       loadingLogs,
-      loadingBar
+      loadingBar,
+      EXEC_KEY
     } = this.state;
     return (
       <div className="mt-5">
         <Debugger loadingData={loadingDebugger} envFile={envFile} />
         <SourceCodeViewer loadingData={loadingSourceCode} code={sourceCode} />
-        <PopulationGraph loadingData={loadingPopulation} envFile={envFile} />
+        <PopulationGraph loadingData={loadingPopulation} EXEC_KEY={EXEC_KEY} />
         <PopulationBarGraph loadingData={loadingBar} envFile={envFile} />
         <ScatterPlot loadingData={loadingScatter} envFile={envFile} />
         <LogsViewer loadingData={loadingLogs} envFile={envFile} />
