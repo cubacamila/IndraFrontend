@@ -18,7 +18,7 @@ import { Button } from 'react-native-elements';
 import Menu from './components/Menu.js';
 import Properties from './components/Properties.js'
 import ModelView from './components/ModelView.js'
-import {InDevScreen} from './components/InDevScreen'
+//import {InDevScreen} from './components/InDevScreen'
 
 AppRegistry.registerComponent('main', () => App);
 AppRegistry.registerComponent('properties', () => Properties);
