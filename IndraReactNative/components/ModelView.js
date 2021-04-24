@@ -5,6 +5,7 @@ import axios from 'axios';
 import config from '../../IndraReactCommon/config'
 import { ScrollView } from 'react-native-gesture-handler';
 
+
 var width = Dimensions.get('window').width;
 var height = Dimensions.get('window').height;
 
@@ -23,6 +24,7 @@ class ModelView extends Component {
         this.props_url = config.PROPS_URL;
         this.menu_url = config.MENU_URL;
         this.run_url = config.RUN_URL;
+        this.graphs = ["population graph, scatter plot, bar graph"];
         this.updateModelId = this.updateModelId.bind(this);
         this.modelExist = this.modelWorking.bind(this);
         this.handleRunPeriod = this.handleRunPeriod.bind(this);
@@ -94,16 +96,6 @@ class ModelView extends Component {
         //console.log("find model name:", this.state.modelParams);
         var temp = <Text>loading...</Text>
         
-        var buttons = [];
-        if (this.state.models != undefined) {
-            var obj = JSON.parse(this.state.models);
-            for(let i = 2; i < 7; i++){
-                //console.log("i:", i);
-                buttons.push(obj[i].func);
-                //console.log("adding func:", obj[i].func);
-            }
-        }
-        
         
         
         
@@ -112,45 +104,20 @@ class ModelView extends Component {
 
         return(
             <View>
-                <ScrollView>
-                    {/*
-                    <View style={{padding: 5}}>
-                        <Text style={styles.titleText}>
-                            {this.state.modelName}
-                        </Text>
-                    </View>
-                    */}
-                <ScrollView 
-                    
-                    showsHorizontalScrollIndicator={false}
-                    pagingEnabled = { true }
-                    horizontal='true' 
-                    contentInset={{
-                    top: 0,
-                    left: 0,
-                    bottom: 0,
-                    right: width*0.55,
-                    }}
-                    >
-                        
-                    <ButtonGroup
-                        onPress={i => {
-                            this.updateModelId(i);
-                            this.modelWorking(i);
-                          }}
-                        selectedIndex={this.state.selectedModel}
-                        buttons={buttons}
-                        containerStyle={styles.buttonContainer}
-                        buttonStyle={styles.buttonStyle}
-                        width={width*1.5}
-                    />
-
 
                 
-                </ScrollView>
-                    <Text>{"\n"}</Text>
-                    <View style={styles.rowRun}>
-                    
+                <Text style={styles.modelStatus}>Model Status:</Text>
+
+                <View style={styles.modelStatusContainer}>
+                    <ScrollView>
+                        <Text style={styles.modelStatus}>{this.state.msg}</Text>
+                    </ScrollView>
+                </View>
+
+                <View>
+
+                </View>
+                <View style={styles.rowRun}>
                     <Button
                         title="run"
                         onPress={ this.sendNumPeriods }
@@ -165,9 +132,10 @@ class ModelView extends Component {
                         containerStyle={styles.input}
                     />
                     <Text style={styles.runText}>periods.</Text>
-                    </View>
-                    <Text style={styles.modelStatus}>Model Status:{"\n"}{this.state.msg}</Text>
-                </ScrollView>
+                </View>
+                    
+
+
             </View>
         )}
     }
@@ -204,11 +172,21 @@ const styles = StyleSheet.create ({
         marginTop: height* 0.015,
     },
     rowRun: {
-        flex: 1,
         flexDirection: "row",
+        margin: width*0.05,
+        marginTop: height*0.5,
     },
     modelStatus: {
         marginLeft: width*0.03,
-    }
+    },
+    modelStatusContainer: {
+        borderRadius:2,
+        borderColor:"grey", 
+        borderWidth:3, 
+        opacity:0.9, 
+        height:height/3.5, 
+        margin:width*0.02
+    },
+
 
 })
