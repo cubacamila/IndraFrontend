@@ -318,7 +318,7 @@ class ActionMenu extends Component {
                 i,
                 parseInt(id),
                 menu[id].question,
-                menu[id].func,
+                menu[id].url,
               )
               : null))}
           </ListGroup>
