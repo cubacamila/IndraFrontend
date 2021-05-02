@@ -6,6 +6,7 @@ import Home from './components/Home';
 import WIP from './components/WIP';
 import ModelDetail from './components/ModelDetail';
 import ActionMenu from './components/ActionMenu';
+import DebugMenu from './components/DebugMenu';
 import NotFoundPage from './components/NotFoundPage';
 import ErrorCatching from './components/ErrorCatching';
 
@@ -39,6 +40,7 @@ export function IndraRoutes() {
       <Route exact path="/wip" component={WIP} />
       <Route exact path="/models/props/:id" component={ModelDetail} />
       <Route exact path="/models/menu/:id" component={ActionMenu} />
+      <Route exact path="/menus/debug/:id" component={DebugMenu} />
       <Route exact path="/errorCatching" component={ErrorCatching} />
       <Route component={NotFoundPage} />
     </Switch>
