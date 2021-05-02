@@ -5,7 +5,6 @@ import { FontAwesome } from '@expo/vector-icons';
 import axios from 'axios';
 import { ScrollView } from 'react-native-gesture-handler';
 import config from '../../IndraReactCommon/config'
-import { ModelViewMenu } from './ModelViewMenu.js'
 
 
 var width = Dimensions.get('window').width;
