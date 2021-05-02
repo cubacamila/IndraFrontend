@@ -12,20 +12,22 @@
  * the prefix REACT_APP_
  * For more infromation - https://create-react-app.dev/docs/adding-custom-environment-variables/
  */
- let API_URL = 'https://indraabm.herokuapp.com/';
+ //let API_URL = 'https://indraabm.herokuapp.com/';
+ let API_URL = 'https://indraabm.pythonanywhere.com/'
  let PROPS_URL = API_URL + 'models/props/';
  let MENU_URL = API_URL + 'menus/model';
  let RUN_URL = API_URL + 'models/run/';
  let CLEAR_REGISTRY_URL = API_URL + 'registry/clear/';
  let POPHIST_URL = API_URL + 'pophist/';
  let USER_MSGS_URL = API_URL + 'user/msgs/';
- 
+ let DEBUG_URL = API_URL + 'menus/debug';
+
  if (process.env.REACT_APP_API_URL) {
    API_URL = process.env.REACT_APP_API_URL;
    PROPS_URL = process.env.REACT_APP_API_URL + 'models/props/';
  }
  
- const config = { API_URL, PROPS_URL, MENU_URL, RUN_URL, CLEAR_REGISTRY_URL, POPHIST_URL, USER_MSGS_URL };
+ const config = { API_URL, PROPS_URL, MENU_URL, RUN_URL, CLEAR_REGISTRY_URL, POPHIST_URL, USER_MSGS_URL, DEBUG_URL };
  
  export default config;
  
