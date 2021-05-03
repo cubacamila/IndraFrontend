@@ -25,6 +25,7 @@ const SOURCE = 6;
 const LOG = 7;
 const MENU_URL = config.MENU_URL;
 const CLEAR_REGISTRY_URL = config.CLEAR_REGISTRY_URL;
+const USER_MSGS_URL = config.USER_MSGS_URL;
 
 class ActionMenu extends Component {
   constructor(props) {
@@ -73,7 +74,7 @@ class ActionMenu extends Component {
         source,
         envFile,
         graph,
-        msg: envFile.user.user_msgs,
+        // msg: envFile.user.user_msgs,
         loadingData: false,
       });
     } catch (error) {
@@ -202,11 +203,11 @@ class ActionMenu extends Component {
         envFileWithExecutionKey,
         periodNum,
       );
-
+      const msgData = await axios.get(`${USER_MSGS_URL}${EXEC_KEY}`);
       this.setState({
         envFile: res.data,
         loadingData: false,
-        msg: res.data.user.user_msgs,
+        msg: msgData.data,
       });
       // return true;
     } catch (e) {
@@ -255,15 +256,15 @@ class ActionMenu extends Component {
     return <h1 className="header">{name}</h1>;
   };
 
-  MenuItem = (i, action, text, key) => {
+  MenuItem = (i, action, text, url, key) => {
     /**
      * All models will have all the menu items appear on the page.
      * However, we keep one of the graphs (Population graph or Scatter plot)
      * disabled based on "graph" field from models.json
      */
-    const { graph } = this.state;
+    const { history } = this.props;
+    const { graph, activeDisplay, EXEC_KEY } = this.state;
     const defaultGraph = graph;
-    const { activeDisplay } = this.state;
     return (
       <ListGroup.Item
         className="w-50 p-3 list-group-item list-group-item-action"
@@ -274,7 +275,10 @@ class ActionMenu extends Component {
           || (action === POP && defaultGraph === 'scatter')
         }
         key={key}
-        onClick={() => this.handleClick(action)}
+        onClick={() => {
+          this.handleClick(action);
+          history.push(`${url}/${EXEC_KEY.toString(10)}`);
+        }}
       >
         {text}
       </ListGroup.Item>
@@ -290,13 +294,14 @@ class ActionMenu extends Component {
       loadingPopulation,
       loadingScatter,
       loadingLogs,
-      loadingBar
+      loadingBar,
+      EXEC_KEY
     } = this.state;
     return (
       <div className="mt-5">
         <Debugger loadingData={loadingDebugger} envFile={envFile} />
         <SourceCodeViewer loadingData={loadingSourceCode} code={sourceCode} />
-        <PopulationGraph loadingData={loadingPopulation} envFile={envFile} />
+        <PopulationGraph loadingData={loadingPopulation} EXEC_KEY={EXEC_KEY} />
         <PopulationBarGraph loadingData={loadingBar} envFile={envFile} />
         <ScatterPlot loadingData={loadingScatter} envFile={envFile} />
         <LogsViewer loadingData={loadingLogs} envFile={envFile} />
@@ -316,7 +321,8 @@ class ActionMenu extends Component {
                 i,
                 parseInt(id),
                 menu[id].question,
-                menu[id].func,
+                menu[id].url,
+                i
               )
               : null))}
           </ListGroup>
