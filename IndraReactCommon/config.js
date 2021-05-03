@@ -12,8 +12,7 @@
  * the prefix REACT_APP_
  * For more infromation - https://create-react-app.dev/docs/adding-custom-environment-variables/
  */
- //let API_URL = 'https://indraabm.herokuapp.com/';
- let API_URL = 'https://indraabm.pythonanywhere.com/'
+ let API_URL = 'https://indraabm.herokuapp.com/';
  let PROPS_URL = API_URL + 'models/props/';
  let MENU_URL = API_URL + 'menus/model';
  let RUN_URL = API_URL + 'models/run/';
