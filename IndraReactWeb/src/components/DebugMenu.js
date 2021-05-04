@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import config from 'IndraReactCommon/config';
 import axios from 'axios';
 import ListGroup from 'react-bootstrap/ListGroup';
+import ViewModelDetail from './ViewModelDetail';
 
 class DebugMenu extends Component {
 
@@ -33,6 +34,7 @@ class DebugMenu extends Component {
     **/
     const { history } = this.props;
     const { EXEC_KEY } = this.state;
+    const urls = url.split("{");
     return (
       <ListGroup.Item
         className="w-50 p-3 list-group-item list-group-item-action"
@@ -65,6 +67,8 @@ class DebugMenu extends Component {
     );
   };
 
+
+
   render() {
     console.log(this.state.menu);
     return (
@@ -77,7 +81,9 @@ class DebugMenu extends Component {
           </div>
         </ul>
         {this.renderMapItem()}
+        <ViewModelDetail url = {""} EXEC_KEY={this.state.EXEC_KEY}/>
       </div>
+      
     );
   }
 }
