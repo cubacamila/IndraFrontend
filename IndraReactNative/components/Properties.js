@@ -37,7 +37,10 @@ class Properties extends Component {
         } catch(e) {
             console.log(e);
         }*/
+        console.log("hi");
     }
+
+
 
     updateJson(key, param){
         let properties = this.state.modelDetails
