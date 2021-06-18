@@ -52,6 +52,7 @@ function PopulationGraph(props) {
   return null;
 }
 
+
 PopulationGraph.propTypes = {
   loadingData: PropType.bool,
   EXEC_KEY: PropType.number

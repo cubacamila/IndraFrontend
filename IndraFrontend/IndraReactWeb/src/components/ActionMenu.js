@@ -8,7 +8,6 @@ import PopulationGraph from './PopulationGraph';
 import ScatterPlot from './ScatterPlot';
 import ModelStatusBox from './ModelStatusBox';
 import RunModelButton from './RunModelButton';
-import ErrorCatching from './ErrorCatching';
 import './styles.css';
 import config from 'IndraReactCommon/config';
 
@@ -18,7 +17,6 @@ const SCATTER = 3;
 const MENU_URL = config.MENU_URL;
 const CLEAR_REGISTRY_URL = config.CLEAR_REGISTRY_URL;
 const USER_MSGS_URL = config.USER_MSGS_URL;
-
 
 class ActionMenu extends Component {
   constructor(props) {
@@ -41,11 +39,9 @@ class ActionMenu extends Component {
       continuousRunDisabled: false,
       initLoading: true,
       EXEC_KEY: envFile.exec_key,
-      serverError: false,
     };
     autoBind(this);
   }
-
 
   async componentDidMount() {
     const { location } = this.props;
@@ -94,11 +90,10 @@ class ActionMenu extends Component {
     return true;
   }
 
-
   async componentWillUnmount() {
     // clear the registry in the backend.
     const { EXEC_KEY } = this.state;
-     await axios.delete(
+    await axios.delete(
       `${CLEAR_REGISTRY_URL}${EXEC_KEY}`,
     );
     // not doing anything with the response.
@@ -106,6 +101,7 @@ class ActionMenu extends Component {
     // there should be a error reporting mechanism here to notify
     // admins that a particular key was not cleared.
   }
+
 
   viewSource = async () => {
     try {
@@ -121,12 +117,10 @@ class ActionMenu extends Component {
     }
   };
 
-
   handleRunPeriod = (e) => {
     this.setState({
       periodNum: e.target.value,
     });
-
 
     const valid = this.checkValidity(e.target.value);
     if (valid === 0) {
@@ -142,14 +136,12 @@ class ActionMenu extends Component {
     }
   };
 
-
   checkValidity = (data) => {
     if (data % 1 === 0) {
       return 1;
     }
     return 0;
   };
-
 
   handleClick = (e) => {
     this.setState({
@@ -176,7 +168,6 @@ class ActionMenu extends Component {
     }
   };
 
-
   sendNumPeriods = async () => {
     const { periodNum, envFile, EXEC_KEY } = this.state;
     const envFileWithExecutionKey = { ...envFile, execution_key: EXEC_KEY };
@@ -196,16 +187,10 @@ class ActionMenu extends Component {
       // return true;
     } catch (e) {
       // return false;
-      console.log("Caught an error in sendNumPeriods")
-      this.setState({
-        serverError: true,
-      });
     }
   };
 
-
   timeout = (m) => new Promise((r) => setTimeout(r, m))
-
 
   continuousRun = async () => {
     this.setState(
@@ -232,8 +217,6 @@ class ActionMenu extends Component {
     }
   }
 
-
-
   stopRun = () => {
     this.setState(
       {
@@ -243,8 +226,7 @@ class ActionMenu extends Component {
     );
   }
 
-
-  renderHeader = () => {
+  renderHeader = () => {    
     const { name } = this.state;
     return <h1 className="header">{name}</h1>;
   };
@@ -296,7 +278,6 @@ class ActionMenu extends Component {
     );
   };
 
-
   renderMapItem = () => {
     const { menu } = this.state;
     return (
@@ -317,23 +298,16 @@ class ActionMenu extends Component {
     );
   };
 
-
   render() {
     const {
-      loadingData, msg, disabledButton, errorMessage, initLoading, continuousRunDisabled, serverError,
+      loadingData, msg, disabledButton, errorMessage, initLoading, continuousRunDisabled,
     } = this.state;
-    console.log("From render()")
-    console.log(serverError)
-    if (serverError) {
-      return <ErrorCatching />;
-    }
     if (loadingData && initLoading) {
       return <PageLoader />;
     }
     // if (loadingData && !initLoading){
     //   return;
     // }
-   
     return (
       <div>
         {this.renderHeader()}
@@ -400,6 +374,5 @@ ActionMenu.defaultProps = {
   },
   history: {},
 };
-
 
 export default ActionMenu;
